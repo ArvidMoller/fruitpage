@@ -3,11 +3,15 @@ header{
     text-align: center;
 }
 
-nav{
-    text-align: center;
-}
+/* nav{
+    display: flex;
+    align-items: center;
+} */
 
 .nav-items{
+    display: flex;
+    align-self: center;
+
     padding: 1vh;
     text-decoration: none;
 }

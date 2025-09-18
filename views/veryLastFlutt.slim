@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+html lang="en"
+    head
+        meta charset="UTF-8"/
+        meta name="viewport" content="width=device-width, initial-scale=1.0"/
+        link rel="stylesheet" href="/css/qwe.css"
+        title Document
+    body 
+        - @flutts.each do |flutt|
+            h3 #{flutt["type"]}
+            p Qwe has #{flutt["amount"]} #{flutt["type"]}.
+
+        img src="image/qwe.png"

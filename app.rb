@@ -15,3 +15,24 @@ get("/fruits/:id") do
   @fruit = params[:id].to_s
   slim(:fruits_id)
 end
+
+get('/lastFlutt/:idOne/:idTwo') do 
+  @fluttHash = {
+    "typeOfFlutt" => "#{params[:idOne].to_s}",
+    "numOfFlutt" => "#{params[:idTwo].to_s}"
+  }
+
+  slim(:lastFlutt)
+end
+
+get("/veryLastFlutt") do
+  @flutts = [{
+    "type" => "Banan",
+    "amount" => "5"
+  }, {
+    "type" => "Apple",
+    "amount" => "33"
+  }]
+
+  slim(:veryLastFlutt)
+end
