@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'slim'
+require 'sqlite3'
 
 get("/") do
   slim(:home)
@@ -11,7 +12,7 @@ get("/about") do
   slim(:about)
 end
 
-get("/fruits/:id") do
+get("/fruitisar/:id") do
   @fruit = params[:id].to_s
   slim(:fruits_id)
 end
@@ -35,4 +36,13 @@ get("/veryLastFlutt") do
   }]
 
   slim(:veryLastFlutt)
+end
+
+get("/fruits") do
+  db = SQLite3::Database.new("db/fruits.db")
+  db.results_as_hash = true
+
+  @dataFruits = db.execute("SELECT * FROM fruits")
+
+  slim(:"fruits/index")
 end
