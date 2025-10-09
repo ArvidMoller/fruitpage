@@ -1,12 +1,42 @@
-h1 All flutt
+h2 Sök frukt!
+form action="/fruits" method="get"
+    input type="text" placeholder="Sök på frukt!" name="q"
+    label Visa alla frukter
+    input type="checkbox" name="viewAll"
 
-- @dataFruits.each do |fruit|
+h3 Vill du lägga till en frukt?
+form action="/fruits/add" method="post"
+    input type="text" name="type" placeholder="Vad vill du lägga till?"
+    input type="text" name="amount" placeholder="Hur många vill du ligga til?"
+    input type="submit" value="Lägg till"
 
-    h2 #{fruit["name"]}
+- if @searchSucces == true
+    - @dataFruits.each do |fruit|
 
-    p You have #{fruit["amount"]} #{fruit["name"]}s
+        h2 
+            a href="/fruits/#{fruit["id"]}/edit" #{fruit["name"]}
 
-    hr
-    
+        p You have #{fruit["amount"]} #{fruit["name"]}s
+
+        form action="/fruits/#{fruit["id"]}/delete" method="post"
+            input type="submit" value="Delete"
+
+        hr
+- else
+    p Det finns ingen frukt med det namnet.
+
+    h1 All flutt
+    - @dataFruits.each do |fruit|
+
+        h2 #{fruit["name"]}
+
+        p You have #{fruit["amount"]} #{fruit["name"]}s
+
+        form action="/fruits/#{fruit["id"]}/delete" method="post"
+            input type="submit" value="Delete"
+
+        hr
+
+
 p skibidi dictionary 
 p - qwe 2025

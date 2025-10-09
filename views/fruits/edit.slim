@@ -1,0 +1,9 @@
+h2 Ändra din frukt!
+
+form action="/fruits/#{@fruitData["id"]}/update" method="post" 
+    input type="text" name="type" value="#{@fruitData["name"]}"
+    input type="number" name="amount" value="#{@fruitData["amount"]}"
+    input type="submit" value="Ändra"
+
+form action="/fruits/update/back" method="post"
+    input type="submit" value="Back"
